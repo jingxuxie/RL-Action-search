@@ -2,7 +2,7 @@ name: Materialize and validate research package
 on:
   push:
     paths:
-      - '_transport/source.tar.xz.b64'
+      - '_transport/source.sha256'
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,9 +19,12 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path, PurePosixPath
-          import base64, hashlib, io, lzma, tarfile
+          import hashlib, io, json, lzma, tarfile
           root = Path.cwd()
-          data = base64.b64decode((root / '_transport/source.tar.xz.b64').read_bytes(), validate=False)
+          parts = sorted((root / '_transport').glob('source.part-*'))
+          if len(parts) != 6:
+              raise RuntimeError('Expected six source archive parts')
+          data = b''.join(part.read_bytes() for part in parts)
           expected = (root / '_transport/source.sha256').read_text().strip()
           if hashlib.sha256(data).hexdigest() != expected:
               raise RuntimeError('Research-source checksum mismatch')
@@ -33,15 +36,23 @@ jobs:
                   target = root.joinpath(*name.parts)
                   target.parent.mkdir(parents=True, exist_ok=True)
                   target.write_bytes(archive.extractfile(member).read())
+          manifest = json.loads((root / 'notes/source_manifest.json').read_text())
+          for name, digest in manifest.items():
+              if hashlib.sha256((root / name).read_bytes()).hexdigest() != digest:
+                  raise RuntimeError('Source-file checksum mismatch: ' + name)
+          print('Verified source archive and', len(manifest), 'file hashes')
           PY
       - name: Install scientific dependencies
-        run: python -m pip install -e '.[test]'
+        run: |
+          python -m pip install -r requirements-tested.txt
+          python -m pip install -e .
       - name: Tests and all CPU experiments
         env:
           OPENBLAS_NUM_THREADS: '1'
           OMP_NUM_THREADS: '1'
           MPLBACKEND: Agg
         run: |
+          set -o pipefail
           mkdir -p results
           python -m pytest -q | tee results/ci_tests.txt
           python experiments/run_all.py --suite all
