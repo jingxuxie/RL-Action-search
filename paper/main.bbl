@@ -1,0 +1,66 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Farahmand(2011)]{farahmand2011gap}
+Amir-massoud Farahmand.
+\newblock Action-gap phenomenon in reinforcement learning.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~24, pages 172--180, 2011.
+\newblock URL \url{https://www.sologen.net/papers/ActionGapInRL.pdf}.
+
+\bibitem[Ghasemipour et~al.(2021)Ghasemipour, Schuurmans, and
+  Gu]{ghasemipour2021emaq}
+Seyed Kamyar~Seyed Ghasemipour, Dale Schuurmans, and Shixiang~Shane Gu.
+\newblock {EMaQ}: Expected-max q-learning operator for simple yet effective
+  offline and online {RL}.
+\newblock In \emph{International Conference on Machine Learning}, volume 139 of
+  \emph{Proceedings of Machine Learning Research}, pages 3682--3691, 2021.
+\newblock URL \url{https://proceedings.mlr.press/v139/ghasemipour21a.html}.
+
+\bibitem[Huang et~al.(2025)Huang, Block, Liu, Jiang, Krishnamurthy, and
+  Foster]{huang2025best}
+Audrey Huang, Adam Block, Qinghua Liu, Nan Jiang, Akshay Krishnamurthy, and
+  Dylan~J. Foster.
+\newblock Is best-of-{N} the best of them? coverage, scaling, and optimality in
+  inference-time alignment.
+\newblock arXiv:2503.21878, 2025.
+\newblock URL \url{https://arxiv.org/abs/2503.21878}.
+
+\bibitem[Laroche et~al.(2019)Laroche, Trichelair, and Tachet~des
+  Combes]{laroche2019spibb}
+Romain Laroche, Paul Trichelair, and Remi Tachet~des Combes.
+\newblock Safe policy improvement with baseline bootstrapping.
+\newblock In \emph{International Conference on Machine Learning}, volume~97 of
+  \emph{Proceedings of Machine Learning Research}, pages 3652--3661, 2019.
+\newblock URL \url{https://proceedings.mlr.press/v97/laroche19a.html}.
+
+\bibitem[Lin et~al.(2026)Lin, Shan, Duan, Yang, Zhao, Lei, Zhao, Fan, Feng, and
+  Jia]{lin2026decoupling}
+Xuyao Lin, Yixiang Shan, Jinru Duan, Tao Yang, Xinyu Zhao, Runyu Lei, Yiming
+  Zhao, Jiaxin Fan, Zongbao Feng, and Peng Jia.
+\newblock Decoupling policy extraction for offline reinforcement learning.
+\newblock arXiv:2608.20909, 2026.
+\newblock URL \url{https://arxiv.org/abs/2608.20909}.
+
+\bibitem[Park et~al.(2024)Park, Frans, Levine, and Kumar]{park2024bottleneck}
+Seohong Park, Kevin Frans, Sergey Levine, and Aviral Kumar.
+\newblock Is value learning really the main bottleneck in offline {RL}?
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.09329}.
+
+\bibitem[Scherrer et~al.(2015)Scherrer, Ghavamzadeh, Gabillon, Lesner, and
+  Geist]{scherrer2015ampi}
+Bruno Scherrer, Mohammad Ghavamzadeh, Victor Gabillon, Boris Lesner, and
+  Matthieu Geist.
+\newblock Approximate modified policy iteration and its application to the game
+  of tetris.
+\newblock \emph{Journal of Machine Learning Research}, 16\penalty0
+  (49):\penalty0 1629--1676, 2015.
+\newblock URL \url{https://jmlr.org/papers/v16/scherrer15a.html}.
+
+\end{thebibliography}

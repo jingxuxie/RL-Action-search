@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "scientific_csv_files": 12,
+  "checked_summary_values": 23,
+  "note": "Tests of recorded claims, not formal proof verification or independence claims."
+}

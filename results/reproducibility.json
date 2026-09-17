@@ -1,0 +1,7 @@
+{
+  "scientific_csv_files": 12,
+  "byte_identical_on_complete_rerun": true,
+  "tests_passed": 303,
+  "python": "3.13.5",
+  "note": "Complete local pipeline rerun; all 12 scientific CSV hashes matched. Timings and PDF metadata excluded."
+}

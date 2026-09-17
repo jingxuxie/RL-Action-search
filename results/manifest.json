@@ -1,0 +1,14 @@
+{
+  "exact_grid.csv": "03167a50459e2eeb626873cf7cd72c9005e5d91a1b8210a3d7e4b669a1ab20ad",
+  "exact_stopping.csv": "607614bac51c3605b7e2bc07fdc194857de2d176403f1d83560cf2d403ae76a2",
+  "exposure_stopping.csv": "ca472daffc1d18ae990fd240bb48d7752b799d1a56c09aa3898e6d2a577b8957",
+  "forks.csv": "8a8a98a509b16b9764f0d65a2d654e07ab1b33275dca5ebcf3c9e1bcf9cff99e",
+  "geometry.csv": "ba8c26c105a543caf1452b05fa7784fb382a8f12521badad2f37d702165c622b",
+  "linear_critics.csv": "0dd172175769c4ddc6cdf26caf62843ba4bab5a38822f4037e0b30b4d19289b6",
+  "offline_datasets.csv": "e1e602c9d871383c59a5d52085065bf21988b5716a4274f88da3c7b62adc4e37",
+  "offline_selection.csv": "6047a1978918454821c776eceb2f0307aeb3c5eadf7df80c5f20042919d171c5",
+  "opening_fork.csv": "6ec83ed0f441a09abbf48c4e6d139133bce68a6012b1772f3de2f4af0a76aa49",
+  "rare_action_control.csv": "2ef975e4dea25c40cd6b2b018ba6d4850ec823b19aeef88dd522401cb4eaa26a",
+  "screening.csv": "9119259ac1fbf0b8fad194a5482f65b3ab220301b1e147c71397d561e45c0d11",
+  "statistical_limit.csv": "724afa8f70fa5d1e5b69f15a9f3ff517ec9e2e67213c16a5fcc03e0ab03c43a2"
+}
