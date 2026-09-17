@@ -1,0 +1,70 @@
+name: Materialize and validate research package
+on:
+  push:
+    paths:
+      - '_transport/source.tar.xz.b64'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Unpack exact locally tested source
+        run: |
+          python - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import base64, hashlib, io, lzma, tarfile
+          root = Path.cwd()
+          data = base64.b64decode((root / '_transport/source.tar.xz.b64').read_bytes(), validate=False)
+          expected = (root / '_transport/source.sha256').read_text().strip()
+          if hashlib.sha256(data).hexdigest() != expected:
+              raise RuntimeError('Research-source checksum mismatch')
+          with tarfile.open(fileobj=io.BytesIO(lzma.decompress(data)), mode='r:') as archive:
+              for member in archive:
+                  name = PurePosixPath(member.name)
+                  if not member.isfile() or name.is_absolute() or '..' in name.parts or name.parts[0] in ('.git', '.github', '_transport'):
+                      raise RuntimeError('Unsafe archive member: ' + member.name)
+                  target = root.joinpath(*name.parts)
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(archive.extractfile(member).read())
+          PY
+      - name: Install scientific dependencies
+        run: python -m pip install -e '.[test]'
+      - name: Tests and all CPU experiments
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+          MPLBACKEND: Agg
+        run: |
+          mkdir -p results
+          python -m pytest -q | tee results/ci_tests.txt
+          python experiments/run_all.py --suite all
+          python experiments/stress_controls.py
+          python experiments/run_all.py --suite summary
+          python experiments/plot_results.py
+          python scripts/verify_results.py
+      - name: Install LaTeX and build manuscript
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended lmodern
+          bash scripts/build_paper.sh
+      - name: Record verified package on main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md pyproject.toml Makefile requirements-tested.txt .gitignore src tests experiments scripts notes results figures paper
+          git diff --cached --quiet || git commit -m 'Materialize full research draft, validated experiments, and compiled manuscript'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: search-or-refresh-research
+          path: |
+            paper/main.pdf
+            results
+            notes
