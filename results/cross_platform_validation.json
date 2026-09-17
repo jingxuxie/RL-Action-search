@@ -1,0 +1,26 @@
+{
+  "ci_commit": "c68731f620221f9c0b510a334595335aad1e76a8",
+  "ci_run_id": 35184890990,
+  "csv_count": 12,
+  "byte_identical_csv_count": 8,
+  "all_numeric_results_within_tolerance": true,
+  "rtol": 1e-10,
+  "atol": 1e-11,
+  "pdf_pages_local": 18,
+  "pdf_pages_ci": 18,
+  "pdf_extracted_text_identical": true,
+  "files": [
+    {"file": "exact_grid.csv", "byte_identical": false, "max_abs_numeric_difference": 9.999778782798785e-13},
+    {"file": "exact_stopping.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "exposure_stopping.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "forks.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "geometry.csv", "byte_identical": false, "max_abs_numeric_difference": 9.999640004920707e-14},
+    {"file": "linear_critics.csv", "byte_identical": false, "max_abs_numeric_difference": 9.998946115530316e-14},
+    {"file": "offline_datasets.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "offline_selection.csv", "byte_identical": false, "max_abs_numeric_difference": 1.0000333894311098e-12},
+    {"file": "opening_fork.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "rare_action_control.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "screening.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0},
+    {"file": "statistical_limit.csv", "byte_identical": true, "max_abs_numeric_difference": 0.0}
+  ]
+}
